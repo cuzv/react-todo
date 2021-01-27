@@ -4,10 +4,16 @@ import './Main.css'
 
 export default class Main extends Component {
     render() {
+      const {todos, handleToggleAccomplish, handleDelete} = this.props
+
         return (
             <ul className="todo-main">
-            <Row />
-            <Row />
+              {
+                todos.map(todo => <Row key={todo.id} 
+                  {...todo}
+                  handleToggleAccomplish={handleToggleAccomplish}
+                  handleDelete={handleDelete} />)
+              }
           </ul>
         )
     }
