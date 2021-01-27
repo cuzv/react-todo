@@ -20,7 +20,7 @@ export default class Row extends Component {
 
   handleDelete = (id) => {
     return () => {
-      if (window.confirm('Are you confirm to delete this todo task?')) {
+      if (window.confirm('Are you confirm to delete this task?')) {
         this.props.handleDelete(id)
       }
     }

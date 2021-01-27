@@ -36,14 +36,26 @@ export default class App extends Component {
     this.setState({todos: candidates})
   }
 
+  handleToggleAccomplishAll = (accomplish) => {
+    const {todos} = this.state
+    const candidates = todos.map(todo => { return {...todo, accomplish} })
+    this.setState({todos: candidates})
+  }
+
+  handleClearAllAccomplished = () => {
+    const {todos} = this.state
+    const candidates = todos.filter(todo => !todo.accomplish)
+    this.setState({todos: candidates})
+  }
+
   render() {
     const {todos} = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
           <Header handleCreateTodo={this.handleCreateTodo} />
-          <Main todos={todos} handleToggleAccomplish={this.handleToggleAccomplish} handleDelete={this.handleDelete}/>
-          <Footer />
+          <Main todos={todos} handleToggleAccomplish={this.handleToggleAccomplish} handleDelete={this.handleDelete} />
+          <Footer todos={todos} handleToggleAccomplishAll={this.handleToggleAccomplishAll} handleClearAllAccomplished={this.handleClearAllAccomplished} />
         </div>
       </div>
     )
