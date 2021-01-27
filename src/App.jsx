@@ -30,12 +30,18 @@ export default class App extends Component {
     this.setState({todos: candidates})
   }
 
+  handleCreateTodo = (todo) => {
+    const {todos} = this.state
+    const candidates = [todo, ...todos]
+    this.setState({todos: candidates})
+  }
+
   render() {
     const {todos} = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header />
+          <Header handleCreateTodo={this.handleCreateTodo} />
           <Main todos={todos} handleToggleAccomplish={this.handleToggleAccomplish} handleDelete={this.handleDelete}/>
           <Footer />
         </div>
